@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join GrabGoals Team</title>
+  <link href="./assets/css/style.css" rel="stylesheet">
+
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+
+      if (!token) {
+        document.getElementById('invite-message').textContent =
+          'This invitation link is invalid or incomplete.';
+        return;
+      }
+
+      const appUrl =
+        `grabgoals://team-invite?token=${encodeURIComponent(token)}`;
+
+      document.getElementById('open-grabgoals').href = appUrl;
+
+      // Try to open the installed app.
+      window.location.href = appUrl;
+    };
+  </script>
+</head>
+
+<body class="bg-gray-50 h-screen flex items-center justify-center">
+  <main class="text-center px-6">
+    <img class="w-24 mx-auto mb-10 object-cover object-center rounded-3xl border-4 border-primary-900" alt="hero" src="assets/images/icon.png">
+
+    <h1 class="text-3xl font-bold text-gray-900">
+      Join a GrabGoals Team
+    </h1>
+
+    <p id="invite-message" class="mt-4 mb-8 text-gray-600">
+      Opening GrabGoals...
+    </p>
+
+    <a
+      id="open-grabgoals"
+      href="#"
+      class="inline-block px-6 py-3 rounded-lg bg-primary-900 text-white mb-6"
+    >
+      Open GrabGoals
+    </a>
+
+    <p class="text-gray-600 mb-4">
+      Don't have the app yet? Download it:
+    </p>
+
+    <div class="flex justify-center items-center">
+      <a aria-label="Download on the App Store" href="https://apps.apple.com/us/app/id6478873709"><img src="assets/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="190" alt="App store"></a>
+      <a aria-label="Download on the Play Store" href="https://play.google.com/store/apps/details?id=com.grabgoals.bundle"><img src="assets/images/google-play-badge.png" width="240" alt="play store"></a>
+    </div>
+  </main>
+</body>
+</html>
