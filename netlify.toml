@@ -1,0 +1,2 @@
+[functions."keep-supabase-alive"]
+  schedule = "0 */6 * * *"
